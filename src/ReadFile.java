@@ -22,10 +22,8 @@ public class ReadFile {
         FileReader fr = null;
 
         try {
-
             fr = new FileReader(FILENAME);
             br = new BufferedReader(fr);
-
             String sCurrentLine;
             br.readLine();// read first line
             AtomicInteger id = new AtomicInteger(0);

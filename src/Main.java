@@ -2,6 +2,7 @@ import model.Photo;
 import model.PhotoToSlidesConverter;
 import model.Slide;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
@@ -14,6 +15,9 @@ public class Main {
 
         List<Slide> slides =  new PhotoToSlidesConverter().convert(photos);
         List<Slide> result = new SlideMaker().createSlide(slides);
+
+        SaveFile.save(result);
+
     }
 
 }
