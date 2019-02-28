@@ -23,7 +23,6 @@ public class SaveFile {
                     line += ids[i] + " ";
                 }
                 try {
-
                     writer.append(line.substring(0, line.length()-1));
                 } catch (IOException e) {
                     e.printStackTrace();
