@@ -3,6 +3,7 @@ package model;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.BitSet;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -32,7 +33,7 @@ public class PhotoToSlidesConverter {
         slides.addAll(sortedPhotos.get(false).stream().map(this::createSlide).collect(Collectors.toList()));
 
         LinkedList<Photo> verticalSortedPhotos =
-                sortedPhotos.get(true).stream().sorted(Comparator.comparingInt(p -> p.getTags().size())).collect(
+                sortedPhotos.get(true).stream().sorted(Collections.reverseOrder(Comparator.comparingInt(p -> p.getTags().size()))).collect(
                         Collectors.toCollection(LinkedList::new));
 
 
@@ -51,7 +52,6 @@ public class PhotoToSlidesConverter {
                 photo2 = lastIterator.next();
 
                 if (!photo1.getTags().containsAll(photo2.getTags())) {
-                    slides.add(createSlide(photo1, photo2));
                     wasFound = true;
                     break;
                 }
