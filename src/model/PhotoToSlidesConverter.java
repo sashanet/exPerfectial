@@ -30,16 +30,18 @@ public class PhotoToSlidesConverter {
         List<Slide> slides = new ArrayList<>();
 
         //horizontal
-        slides.addAll(sortedPhotos.get(false).stream().map(this::createSlide).collect(Collectors.toList()));
+        slides.addAll(sortedPhotos.getOrDefault(false, Collections.emptyList()).stream().map(this::createSlide).collect(Collectors.toList()));
 
         LinkedList<Photo> verticalSortedPhotos =
-                sortedPhotos.get(true).stream().sorted(Collections.reverseOrder(Comparator.comparingInt(p -> p.getTags().size()))).collect(
+                sortedPhotos.getOrDefault(true, Collections.emptyList()).stream().sorted(Collections.reverseOrder(Comparator.comparingInt(p -> p.getTags().size()))).collect(
                         Collectors.toCollection(LinkedList::new));
 
 
 
         while (true) {
-
+            if (verticalSortedPhotos.isEmpty()){
+              break;
+            }
             Photo photo1, photo2 = null;
 
            photo1 = verticalSortedPhotos.getFirst();
