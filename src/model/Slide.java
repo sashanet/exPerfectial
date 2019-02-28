@@ -1,5 +1,6 @@
 package model;
 
+import java.util.BitSet;
 import java.util.Set;
 
 import sun.security.util.BitArray;
@@ -8,7 +9,7 @@ public class Slide {
 
     private int[] photoIds;
 
-    private BitArray tags;
+    private BitSet tags;
 
     private Set<String> tagNames;
 
@@ -22,12 +23,12 @@ public class Slide {
         this.photoIds = photoIds;
     }
 
-    public BitArray getTags() {
+    public BitSet getTags() {
 
         return tags;
     }
 
-    public void setTags(BitArray tags) {
+    public void setTags(BitSet tags) {
 
         this.tags = tags;
     }
