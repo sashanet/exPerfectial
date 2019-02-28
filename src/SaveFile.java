@@ -1,3 +1,4 @@
+import model.Photo;
 import model.Slide;
 
 import java.io.BufferedWriter;
@@ -35,5 +36,26 @@ public class SaveFile {
         }
 
 
+    }
+
+    public static void saveB(List<Photo> photos) {
+        try {
+            BufferedWriter writer = new BufferedWriter(new FileWriter("result.txt"));
+            writer.append(String.valueOf(photos.size()));
+            photos.forEach(slide->{
+                int ids = slide.getId();
+                String line = new String("\n");
+                    line += ids;
+                try {
+                    writer.append(line);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            });
+
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

@@ -10,6 +10,7 @@ public class Photo {
 
     private int id;
     private Set<String> tags;
+    private String tagsNames;
     private boolean vertical;
 
     public Set<String> getTags() {
@@ -23,6 +24,7 @@ public class Photo {
     public void setTags(Set<String> tags) {
 
         this.tags = tags;
+        this.tagsNames = tags.toString();
     }
 
     public boolean isVertical() {
@@ -41,6 +43,10 @@ public class Photo {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getTagsNames() {
+        return tagsNames;
     }
 
     @Override

@@ -32,7 +32,7 @@ public class ReadFile {
                 photo.setVertical(!raws[0].equals(H));
                 photo.setId(id.getAndIncrement());
                 int size = Integer.parseInt(raws[1]) + 2;
-                photo.setTags(new HashSet(Arrays.asList(raws).subList(2, size)));
+                photo.setTags(new TreeSet<>(Arrays.asList(raws).subList(2, size)));
                 photos.add(photo);
             }
 
