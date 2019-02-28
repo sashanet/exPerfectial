@@ -10,18 +10,21 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 public class PhotoToSlidesConverter {
-
-    private List<String> uniqueTags;
+    private int counter = 0;
+    private Map<String, Integer> uniqueTags;
 
     public List<Slide> convert(List<Photo> photos) {
 
         final Map<Boolean, List<Photo>> sortedPhotos =
                 photos.stream().collect(Collectors.groupingBy(Photo::isVertical));
 
-        uniqueTags = photos.stream().map(Photo::getTags).flatMap(Set::stream).collect(Collectors.toList());
+         AtomicInteger index = new AtomicInteger(0);
+        uniqueTags = photos.stream().map(Photo::getTags).flatMap(Set::stream).distinct().collect(Collectors.toMap(Function.identity(), s -> index.getAndIncrement()));
 
         List<Slide> slides = new ArrayList<>();
 
@@ -76,10 +79,10 @@ public class PhotoToSlidesConverter {
 
         return slides;
 
+
     }
 
     private Slide createSlide(Photo... photos) {
-
         Slide slide = new Slide();
 
         slide.setPhotoIds(new int[photos.length]);
@@ -96,7 +99,7 @@ public class PhotoToSlidesConverter {
         }
 
         //TODO comment on prod
-        slide.setTagNames(tagNames);
+//        slide.setTagNames(tagNames);
 
         slide.setTags(toBitSet(tagNames));
 
@@ -109,7 +112,7 @@ public class PhotoToSlidesConverter {
         BitSet tags = new BitSet(uniqueTags.size());
 
         for (String tag : tagNames) {
-            tags.set(uniqueTags.indexOf(tag));
+            tags.set(uniqueTags.get(tag));
         }
         return tags;
     }
