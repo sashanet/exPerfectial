@@ -8,7 +8,7 @@ public class Main {
 
   public static void main(String[] args) {
 
-    String FILENAME = "c.txt";
+    String FILENAME = "d.txt";
     System.out.println("Hello World!");
     ReadFile readFile = new ReadFile();
     List<Photo> photos = readFile.readFile(FILENAME);

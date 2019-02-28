@@ -22,7 +22,7 @@ public class SlideMaker {
       images.remove(next);
       slide.add(next);
       first = next;
-      if (slide.size() % 10 == 0){
+      if (slide.size() % 1000 == 0){
         System.out.println("processed images: " + slide.size());
       }
     }
