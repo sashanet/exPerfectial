@@ -29,7 +29,6 @@ public class ReadFile {
             br.readLine(); // read first line
             while ((sCurrentLine = br.readLine()) != null) {
                 String[] raws = sCurrentLine.split(SEPARATOR);
-                System.out.println(sCurrentLine);
                 Photo photo = new Photo();
                 photo.setVertical(raws[0].equals(H));
                 int size = Integer.parseInt(raws[1]) + 2;
