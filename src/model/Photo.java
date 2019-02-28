@@ -1,6 +1,7 @@
 package model;
 
 import java.util.List;
+import java.util.Set;
 
 /**
  * @author Oleksandr Buryk
@@ -8,8 +9,28 @@ import java.util.List;
 public class Photo {
 
     private int id;
-    private List<String> tags;
-    private Boolean isVertical;
+    private Set<String> tags;
+    private boolean vertical;
+
+    public Set<String> getTags() {
+
+        return tags;
+    }
+
+    public void setTags(Set<String> tags) {
+
+        this.tags = tags;
+    }
+
+    public boolean isVertical() {
+
+        return vertical;
+    }
+
+    public void setVertical(boolean vertical) {
+
+        this.vertical = vertical;
+    }
 
     public int getId() {
         return id;
@@ -19,19 +40,6 @@ public class Photo {
         this.id = id;
     }
 
-    public List<String> getTags() {
-        return tags;
-    }
 
-    public void setTags(List<String> tags) {
-        this.tags = tags;
-    }
 
-    public Boolean getVertical() {
-        return isVertical;
-    }
-
-    public void setVertical(Boolean vertical) {
-        isVertical = vertical;
-    }
 }
