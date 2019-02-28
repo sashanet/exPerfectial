@@ -13,6 +13,7 @@ public class Main {
 
 
         List<Slide> slides =  new PhotoToSlidesConverter().convert(photos);
+        List<Slide> result = new SlideMaker().createSlide(slides);
     }
 
 }
