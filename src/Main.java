@@ -8,7 +8,6 @@ public class Main {
         System.out.println("Hello World!");
         ReadFile readFile = new ReadFile();
         List<Photo> result = readFile.readFile();
-        System.out.println(result);
     }
 
 }
