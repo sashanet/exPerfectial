@@ -30,7 +30,7 @@ public class ReadFile {
             while ((sCurrentLine = br.readLine()) != null) {
                 String[] raws = sCurrentLine.split(SEPARATOR);
                 Photo photo = new Photo();
-                photo.setVertical(raws[0].equals(H));
+                photo.setVertical(!raws[0].equals(H));
                 int size = Integer.parseInt(raws[1]) + 2;
                 photo.setTags(new HashSet(Arrays.asList(raws).subList(2, size)));
                 photos.add(photo);
