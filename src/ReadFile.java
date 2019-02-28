@@ -9,7 +9,9 @@ import java.util.*;
  * @author Oleksandr Buryk
  */
 public class ReadFile {
-    private static final String FILENAME = "a.txt";
+    private static final String FILENAME = "b.txt";
+    private static final String SEPARATOR = " ";
+    private static final String H = "H";
 
 
     public List<Photo> readFile(){
@@ -26,10 +28,10 @@ public class ReadFile {
             String sCurrentLine;
             br.readLine(); // read first line
             while ((sCurrentLine = br.readLine()) != null) {
-                String[] raws = sCurrentLine.split(" ");
+                String[] raws = sCurrentLine.split(SEPARATOR);
                 System.out.println(sCurrentLine);
                 Photo photo = new Photo();
-                photo.setVertical(raws[0].equals("H"));
+                photo.setVertical(raws[0].equals(H));
                 int size = Integer.parseInt(raws[1]) + 2;
                 photo.setTags(new HashSet(Arrays.asList(raws).subList(2, size)));
                 photos.add(photo);
