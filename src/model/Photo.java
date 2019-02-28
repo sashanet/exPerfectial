@@ -40,6 +40,12 @@ public class Photo {
         this.id = id;
     }
 
-
-
+    @Override
+    public String toString() {
+        return "Photo{" +
+                "id=" + id +
+                ", tags=" + tags +
+                ", vertical=" + vertical +
+                '}';
+    }
 }
